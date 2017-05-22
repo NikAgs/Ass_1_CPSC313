@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="simulator">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/simulator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/simulator.jar!/" />
+    </SOURCES>
+  </library>
+</component>
