@@ -1,53 +1,34 @@
-	.section	__TEXT,__text,regular,pure_instructions
-	.macosx_version_min 10, 11
-	.globl	_heapsort
-	.align	4, 0x90
-_heapsort:                              ## @heapsort
+	.file	"heapsort.c"
+	.text
+	.p2align 4,,15
+	.globl	heapsort
+	.type	heapsort, @function
+heapsort:
+.LFB11:
 	.cfi_startproc
-## BB#0:
-	pushq	%rbp
-Ltmp0:
-	.cfi_def_cfa_offset 16
-Ltmp1:
-	.cfi_offset %rbp, -16
-	movq	%rsp, %rbp
-Ltmp2:
-	.cfi_def_cfa_register %rbp
-	pushq	%r15
-	pushq	%r14
 	pushq	%rbx
-	pushq	%rax
-Ltmp3:
-	.cfi_offset %rbx, -40
-Ltmp4:
-	.cfi_offset %r14, -32
-Ltmp5:
-	.cfi_offset %r15, -24
-	movl	%edi, %r14d
-	callq	_heapify_array
-	testl	%r14d, %r14d
-	js	LBB0_3
-## BB#1:                                ## %.lr.ph.preheader
-	movslq	%r14d, %rbx
-	incq	%rbx
-	movq	_heap@GOTPCREL(%rip), %r15
-	.align	4, 0x90
-LBB0_2:                                 ## %.lr.ph
-                                        ## =>This Inner Loop Header: Depth=1
-	movl	%r14d, %edi
-	callq	_extract_max
-	movl	%eax, -4(%r15,%rbx,4)
-	decl	%r14d
-	decq	%rbx
-	jg	LBB0_2
-LBB0_3:                                 ## %._crit_edge
-	addq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	movl	%edi, %ebx
+	call	heapify_array
+	testl	%ebx, %ebx
+	js	.L1
+	.p2align 4,,10
+	.p2align 3
+.L7:
+	movl	%ebx, %edi
+	call	extract_max
+	movslq	%ebx, %rdx
+	subl	$1, %ebx
+	cmpl	$-1, %ebx
+	movl	%eax, heap(,%rdx,4)
+	jne	.L7
+.L1:
 	popq	%rbx
-	popq	%r14
-	popq	%r15
-	popq	%rbp
-	retq
+	.cfi_def_cfa_offset 8
+	ret
 	.cfi_endproc
-
-
-.subsections_via_symbols
+.LFE11:
+	.size	heapsort, .-heapsort
+	.ident	"GCC: (SUSE Linux) 4.8.5"
+	.section	.note.GNU-stack,"",@progbits
