@@ -91,7 +91,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     }
                     break;
 		//----------------------------						//6.1 Fetch
-		case I_IOPQ:
+		case 0xa:
                     switch (f.iFn.getValueProducedInt()) {
                         case A_ADDQ:
                         case A_SUBQ:
@@ -148,6 +148,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
 				f.rA.set(R_NONE);
+				break;
                    	}
 			break;
                     default:
@@ -161,7 +162,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_RMMOVQ:
                     case I_MRMOVQ:
                     case I_OPQ:
-		    case I_IOPQ:							//6.1 rB
+		    case 0xa:							//6.1 rB
                         f.rB.set(mem.read(F.pc.get() + 1, 1)[0].value() & 0xf);
                         break;
 		    case I_CALL:
@@ -171,6 +172,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
 				f.rA.set(R_NONE);
+				break;
                    	}
 			break;
                     default:
@@ -182,7 +184,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_IRMOVQ:
                     case I_RMMOVQ:
                     case I_MRMOVQ:
-		    case I_IOPQ:							//6.1 valC
+		    case 0xa:							//6.1 valC
                         f.valC.set(mem.readLongUnaligned(F.pc.get() + 2));
                         break;
                     case I_CALL:
@@ -192,6 +194,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
                         	f.valC.set(mem.readLongUnaligned(F.pc.get() + 1));
+				break;
                    	}
                         break;
                     case I_JXX:
@@ -221,6 +224,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
                         	f.valP.set(F.pc.get() + 9);
+				break;
                    	}
                         break;
                     case I_JXX:
@@ -229,7 +233,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_IRMOVQ:
                     case I_RMMOVQ:
                     case I_MRMOVQ:
-		    case I_IOPQ:							//6.1 valP
+		    case 0xa:							//6.1 valP
                         f.valP.set(F.pc.get() + 10);
                         break;
                     default:
@@ -281,7 +285,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_RMMOVQ:
                     case I_MRMOVQ:
                     case I_OPQ:
-		    case I_IOPQ:							//6.1 srcB = rB
+		    case 0xa:							//6.1 srcB = rB
                         d.srcB.set(D.rB.getInt());
                         break;
                     case I_CALL:
@@ -291,6 +295,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
                        		d.srcB.set(R_RSP);
+				break;
                    	}
                         break;
                     case I_RET:
@@ -307,7 +312,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_RRMVXX:
                     case I_IRMOVQ:
                     case I_OPQ:
-		    case I_IOPQ:							//6.1 dstE = rB
+		    case 0xa:							//6.1 dstE = rB
                         d.dstE.set(D.rB.getInt());
                         break;
                     case I_CALL:
@@ -317,6 +322,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
                        		d.dstE.set(R_RSP);
+				break;
                    	}
 			break;
                     case I_RET:
@@ -341,6 +347,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 				break;
 			    default:
 				d.dstM.set(R_NONE);
+				break;
                    	}
                         break;
                     default:
@@ -408,7 +415,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                 case I_IRMOVQ:
                 case I_MRMOVQ:
                 case I_RMMOVQ:
-		case I_IOPQ:								//6.1 aluA = valC
+		case 0xa:								//6.1 aluA = valC
                     aluA = E.valC.get();
                     break;
                 case I_RET:
@@ -422,6 +429,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			    break;
 			default:
 			    aluA = -8
+			    break;
                     }
 		    break;
                 case I_PUSHQ:
@@ -441,7 +449,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                 case I_RMMOVQ:
                 case I_MRMOVQ:
                 case I_OPQ:
-		case I_IOPQ:								//6.1 aluB = valB
+		case 0xa:								//6.1 aluB = valB
                 case I_CALL:								//6.2 aluB = valB same for both iFn
                 case I_RET:
                 case I_PUSHQ:
@@ -468,7 +476,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     setCC = false;
                     break;
                 case I_OPQ:
-		case I_IOPQ:								//6.1 aluFun
+		case 0xa:								//6.1 aluFun
                     aluFun = E.iFn.getInt();
                     setCC = true;
                     break;
@@ -596,6 +604,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			        break;
 			    default:
                         	mem.writeLong(M.valE.get(), M.valP.get());
+			    break;
                         }
                         break;
                     default:
@@ -686,6 +695,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 		    	break;
 		    default:
                 	w.pc.set(E.valC.get());
+		    	break;
                 }
                 break;
             case I_JXX:
