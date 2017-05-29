@@ -1,0 +1,41 @@
+(b)
+	I_IOPQ
+		Fetch
+			iCode:iFn 	<= m_1[pc]
+			rA:rB 		<= m_1[pc + 1]
+			valC		<= m_8[pc + 2]
+			valP		<= pc + 10
+		Decode
+			srcA		<= F
+			srcB		<= rB
+			dstM		<= F
+			dstE		<= rB
+			valA		<= F
+			valB		<= R[srcB]
+		Execute
+			valE		<= valB OP valC
+		Memory
+		Write back
+		Pc update
+			PC		<= valP
+
+	I_CALL	
+		Fetch
+			iCode:iFn 	<= m_1[pc]
+			rA:rB 		<= m_1[pc + 1]
+			valC		<= m_8[pc + 2]
+			valP		<= pc + 10
+		Decode
+			srcA		<= F
+			srcB		<= rB
+			dstM		<= rA
+			dstE		<= F
+			valA		<= F
+			valB		<= R[srcB]
+		Execute
+			valE		<= valB + valC
+		Memory
+			R[rA]		<= valP
+		Write back
+		Pc update
+			PC		<= valE
