@@ -118,6 +118,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                             f.stat.set(S_INS);
                             break;
                     }
+		    break;
 		//---------------------------
                 default:
                     f.stat.set(S_INS);
@@ -148,6 +149,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			    default:
 				f.rA.set(R_NONE);
                    	}
+			break;
                     default:
                         f.rA.set(R_NONE);
                 }
@@ -170,6 +172,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			    default:
 				f.rA.set(R_NONE);
                    	}
+			break;
                     default:
                         f.rB.set(R_NONE);
                 }
@@ -315,6 +318,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			    default:
                        		d.dstE.set(R_RSP);
                    	}
+			break;
                     case I_RET:
                     case I_PUSHQ:
                     case I_POPQ:
@@ -328,6 +332,8 @@ public class CPU extends AbstractY86CPU.Sequential {
                 switch (D.iCd.getInt()) {
                     case I_MRMOVQ:
                     case I_POPQ:
+			d.dstM.set(D.rA.getInt());
+			break;
 		    case I_CALL:
 		    	switch (D.iFn.getInt()) {					//6.2 set dstM based on iFn
 			    case 0x9:
