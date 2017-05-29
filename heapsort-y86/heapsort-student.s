@@ -206,7 +206,27 @@ heapsort:
 ### function as described by the C function
 ### from the previous section.
 	
-	halt
+    pushq	%rbx                  # push old value of %rbx into stack (callee-saved)
+	rrmovq	%rdi, %rbx            # save last in %rbx 
+	call	heapify_array         # call heapify_array with changed %rbx
+	andq	%rbx, %rbx            # set condition codes comparing %rbx
+	jl	done                      # goto done if last < 0
+
+loop:
+	rrmovq	%rbx, %rdi            # save i in %rdi
+	call	extract_max           # call extract_max with changed %rdi
+	rrmovq	%rbx, %rdx            # save i in %rdx
+    irmovq  $1, %rcx              
+	subq	%rcx, %rbx            # i gets subtracted by 1
+    irmovq  $8, %rcx 
+    mulq    %rcx, %rdx            # multiply %rdx by 8
+	rmmovq	%rax, 0x1000(%rdx)    # save %rax (set by extract_max) to heap[i]
+    andq	%rbx, %rbx   
+	jge	loop                      # goto loop if i >= 0
+    
+done:
+	popq	%rbx                  # restore old value of %rbx
+	ret                           # done, return
 #
 # Array to sort
 #
