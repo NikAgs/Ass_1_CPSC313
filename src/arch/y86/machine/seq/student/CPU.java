@@ -15,7 +15,7 @@ public class CPU extends AbstractY86CPU.Sequential {
      * Execute one clock cycle with all stages executing in parallel.
      *
      * @throws InvalidInstructionException                if instruction is invalid (including invalid register number).
-     * @throws AbstractMainMemory.InvalidAddressException if instruction attemps an invalid memory access (either instruction or data).
+     * @throws AbstractMainMemory.InvalidAddressException if instruction attempts an invalid memory access (either instruction or data).
      * @throws AbstractMainMemory.OutOfMemoryException    if too many 1K pages have been accessed by the program.
      * @throws MachineHaltException                       if instruction halts the CPU.
      * @throws Register.TimingException                   if a stage tries to access a stage register that was never written to.
@@ -428,7 +428,7 @@ public class CPU extends AbstractY86CPU.Sequential {
 			    aluA = E.valC.get();
 			    break;
 			default:
-			    aluA = -8
+			    aluA = -8;
 			    break;
                     }
 		    break;

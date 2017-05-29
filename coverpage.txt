@@ -32,10 +32,10 @@ file. If working in pairs both of you must do this.
 
 
 STUDENT  1
-Name :
-St. No:
-Unix Id :
-Email:
+Name : Nikhil Agarwal
+St. No: 53835138
+Unix Id : 501(TheNik) 
+Email: nikhil.agarwal@alumni.ubc.ca
 
 
 STUDENT  2
