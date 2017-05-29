@@ -3,7 +3,7 @@
 	Student #: 53835138
 
 	Name: Victor Li
-	Student #: 
+	Student #: 40394141
 
 (b)
 	I_IOPQ
@@ -56,5 +56,5 @@
 
 (d)
 	Time spent for Nikhil: 3 hours
-	Time spent for Victor: 
+	Time spent for Victor: 5 hours
 	Time spent together: 4 hours

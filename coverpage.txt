@@ -39,10 +39,10 @@ Email: nikhil.agarwal@alumni.ubc.ca
 
 
 STUDENT  2
-Name :
-St. No:
-Unix Id :
-Email:
+Name : Victor Li
+St. No: 40394141
+Unix Id : 502(victor)
+Email: kingv30@gmail.com
 
 
-ACKNOWLEDGMENTS :
+ACKNOWLEDGMENTS : We’d like to thank our families, friends, and peers for their ongoing support. 
