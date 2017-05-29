@@ -16,6 +16,7 @@
 			valE		<= valB OP valC
 		Memory
 		Write back
+			R[rB]		<= valE
 		Pc update
 			PC		<= valP
 
@@ -35,7 +36,7 @@
 		Execute
 			valE		<= valB + valC
 		Memory
-			R[rA]		<= valP
 		Write back
+			R[rA]		<= valP
 		Pc update
 			PC		<= valE
