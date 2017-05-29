@@ -52,9 +52,9 @@
 (c) 
 	iopq.s: Each of the seven instructions was tested with the maximum possible constant value (0xffffffffffffffff) and lowest (0). Additionally, negative numbers were tested and numbers larger than 8 bytes. All tests passed except the last one which gave an Assembly error as expected. 
 
-	call.s:
+	call.s: We tested with a call instruction specifying the function at the given address and one with a random memory address. The former passed and successfully stored the returning address in the register parameter, while the latter halted prematurely yet still managed to store the correct returning address. 
 
 (d)
-	Time spent for Nikhil: 3 hours
+	Time spent for Nikhil: 5 hours
 	Time spent for Victor: 5 hours
 	Time spent together: 4 hours
