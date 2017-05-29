@@ -1,3 +1,10 @@
+(a) 	
+	Name: Nikhil Agarwal
+	Student #: 53835138
+
+	Name: Victor Li
+	Student #: 
+
 (b)
 	I_IOPQ
 		Fetch
@@ -40,3 +47,14 @@
 			R[rA]		<= valP
 		Pc update
 			PC		<= valE
+
+
+(c) 
+	iopq.s: Each of the seven instructions was tested with the maximum possible constant value (0xffffffffffffffff) and lowest (0). Additionally, negative numbers were tested and numbers larger than 8 bytes. All tests passed except the last one which gave an Assembly error as expected. 
+
+	call.s:
+
+(d)
+	Time spent for Nikhil: 3 hours
+	Time spent for Victor: 
+	Time spent together: 4 hours

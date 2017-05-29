@@ -9,4 +9,5 @@ main:
 	iandq 0, %rax                   # %rax = 0
 	isubq 20, %rax                  # %rax = -20
 	idivq 7, %rax                   # %rax = 2.85…
+	# iaddq 0xfffffffffffffffff, %rax 
 	
