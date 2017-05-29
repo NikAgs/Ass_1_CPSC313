@@ -22,7 +22,7 @@ heapsort:
 	subl	$1, %ebx              # i gets subtracted by 1
 	cmpl	$-1, %ebx             # compare i and -1 and set condition codes
 	movl	%eax, heap(,%rdx,4)   # save %eax (set by extract_max) to heap[i]
-	jne	.L7                       # goto .L7 if i < 0
+	jne	.L7                       # goto .L7 if i >= 0
 .L1:
 	popq	%rbx                  # restore old value of %rbx
 	.cfi_def_cfa_offset 8
