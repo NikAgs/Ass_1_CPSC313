@@ -600,7 +600,7 @@ public class CPU extends AbstractY86CPU.Sequential {
                     case I_CALL:
 		    	switch (M.iFn.getInt()) {					//6.2 write based on iFn
 			    case 0x9:
-				mem.writeLong(M.valP.get(), M.valA.get());
+				m.valM.set(M.valP.get());	
 			        break;
 			    default:
                         	mem.writeLong(M.valE.get(), M.valP.get());
